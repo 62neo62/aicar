@@ -41,7 +41,7 @@ class yellowlight(TrafficObject):
         logging.debug('yellowLight: slowing car')
         bw.speed = SPEED/2
        
-class StopSign(TrafficObject):
+class stopSign(TrafficObject):
     def set_car_state(self, car_state):
         bw.speed = 0 # 0% duty cycle
         wait.done(3)
