@@ -15,7 +15,7 @@ class AiCar(object):
 
     def __init__(self):
         """ Init camera and wheels"""
-        logging.info('Creating a DeepPiCar...')
+        logging.info('Creating a AiCar...')
 
         picar.setup()
 
@@ -48,7 +48,7 @@ class AiCar(object):
         self.video_orig = self.create_video_recorder('../data/tmp/car_video%s.avi' % datestr)
         self.video_objs = self.create_video_recorder('../data/tmp/car_video_objs%s.avi' % datestr)
 
-        logging.info('Created a DeepPiCar')
+        logging.info('Created AiCar')
 
     def create_video_recorder(self, path):
         return cv2.VideoWriter(path, self.fourcc, 20.0, (self.__SCREEN_WIDTH, self.__SCREEN_HEIGHT))
