@@ -23,7 +23,7 @@ class redlight(TrafficObject):
     def set_car_state(self, car_state):
         logging.debug('redlight: stopping car')
         bw.speed = 0 # 0% duty cycle
-        time.sleep(3)
+        wait_done(3)
         bw.speed = SPEED
         
 class greenlight(TrafficObject):
