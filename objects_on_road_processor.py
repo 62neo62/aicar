@@ -12,7 +12,7 @@ import time
 
 from PIL import Image
 from traffic_objects import *
-
+from traffic_objects import SPEED
 _SHOW_IMAGE = False
 
 
@@ -24,7 +24,7 @@ class ObjectsOnRoadProcessor(object):
 
     def __init__(self,
                  car=None,
-                 defaultservospeed=40,
+                 defaultservospeed=SPEED,
                  model='/home/pi/AiCar/models/object_detection/data/model_result/aicar_edgetpu.tflite',
                  label='/home/pi/AiCar/models/object_detection/data/model_result/trafficobject-labels.txt',
                  width=640,
