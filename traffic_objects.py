@@ -1,6 +1,12 @@
 from threading import Timer
+from picar import back_wheels
 import logging
+import time
 
+bw = back_wheels.Back_Wheels(debug=False, db=db_file) 
+
+global SPEED
+SPEED = 60 #max duty cycle
 
 class TrafficObject(object):
 
@@ -13,41 +19,33 @@ class TrafficObject(object):
         obj_height = obj.bounding_box[1][1]-obj.bounding_box[0][1]
         return obj_height / frame_height > min_height_pct
 
-
 class redlight(TrafficObject):
-
     def set_car_state(self, car_state):
         logging.debug('redlight: stopping car')
-        car_state['speed'] = 0
-
-
+        bw.speed = 0 # 0% duty cycle
+        time.sleep(3)
+        bw.speed = SPEED
+        
 class greenlight(TrafficObject):
-
     def set_car_state(self, car_state):
         logging.debug('greenlight: make no changes')
-
+        bw.speed = SPEED
 
 class pedestrian(TrafficObject):
-
     def set_car_state(self, car_state):
         logging.debug('pedestrian: stopping car')
-
-        car_state['speed'] = 0
-
-###ELTON FIX#####
+        bw.speed = 0 # 0% duty cycle
 
 class yellowlight(TrafficObject):
-
-    def __init__(self, speed_limit):
-        self.speed_limit = speed_limit #making speed 1/2 typical speed
-
-####END ELTON FIX #####
-
-
+    def set_car_state(self, car_state):
+        logging.debug('yellowLight: slowing car')
+        bw.speed = SPEED/2
+       
 class StopSign(TrafficObject):
-    """
-    Stop Sign object would wait
-    """
+    def set_car_state(self, car_state):
+        bw.speed = 0 # 0% duty cycle
+        wait.done(3)
+        bw.speed = SPEED
 
     def __init__(self, wait_time_in_sec=3, min_no_stop_sign=20):
         self.in_wait_mode = False
@@ -78,6 +76,7 @@ class StopSign(TrafficObject):
 
     def wait_done(self):
         logging.debug('stop sign: 3) finished waiting for %d seconds' % self.wait_time_in_sec)
+        time.sleep(self)
         self.in_wait_mode = False
 
     def clear(self):
