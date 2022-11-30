@@ -3,6 +3,7 @@ import picar
 import cv2
 import datetime
 from objects_on_road_processor import ObjectsOnRoadProcessor
+from traffic_objects import 
 
 _SHOW_IMAGE = True
 
@@ -73,7 +74,7 @@ class AiCar(object):
         self.video_objs.release()
         cv2.destroyAllWindows()
 
-    def drive(self, speed=__INITIAL_SPEED):
+    def drive(self, speed=SPEED):
         """ Main entry point of the car, and put it in drive mode """
 
         logging.info('Starting to drive at speed %s...' % speed)
@@ -106,7 +107,7 @@ def show_image(title, frame, show=_SHOW_IMAGE):
 
 def main():
     with AiCar() as car:
-        car.drive(40)
+        car.drive(SPEED)
 
 
 if __name__ == '__main__':
