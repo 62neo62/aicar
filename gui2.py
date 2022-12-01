@@ -1,5 +1,4 @@
 import tkinter as tk
-#from startstopcar import *
 import back_wheels
 from back_wheels.py import stop
 import main
