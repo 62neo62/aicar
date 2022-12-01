@@ -10,7 +10,7 @@
 * Update      : Cavon    2016-09-23    New release
 **********************************************************************
 '''
-import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO ##connect to pi
 
 class Motor(object):
 	''' Motor driver class
