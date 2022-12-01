@@ -31,10 +31,10 @@ class Window(Frame):
 
     def clickExitButton(self):
         exit()
-    def stopbutton:
+    def stopbutton():
         stop(self)
     
-    def startbutton:
+    def startbutton():
         main()
         
 root = Tk()
