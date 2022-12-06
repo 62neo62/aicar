@@ -1,5 +1,5 @@
 from threading import Timer
-from picar import back_wheels
+import back_wheels
 import logging
 import time
 
@@ -13,11 +13,6 @@ class TrafficObject(object):
     def set_car_state(self, car_state):
         pass
 
-    @staticmethod
-    def is_close_by(obj, frame_height, min_height_pct=0.05):
-        # default: if a sign is 10% of the height of frame
-        obj_height = obj.bounding_box[1][1]-obj.bounding_box[0][1]
-        return obj_height / frame_height > min_height_pct
 
 class redlight(TrafficObject):
     def set_car_state(self, car_state):
