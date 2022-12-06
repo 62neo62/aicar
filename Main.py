@@ -2,7 +2,7 @@ import logging
 import picar
 import cv2
 import datetime
-from objects_on_road_processor import ObjProcess
+from object_processor import ObjProcess
 from traffic_objects import 
 
 _SHOW_IMAGE = True
