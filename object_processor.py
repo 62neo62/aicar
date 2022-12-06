@@ -17,10 +17,7 @@ _SHOW_IMAGE = False
 
 
 class ObjProcess(object):
-    """
-    This class 1) detects what objects (namely traffic signs and people) are on the road
-    and 2) controls the car navigation (speed) accordingly
-    """
+
 
     def __init__(self,
                  car=None,
@@ -47,7 +44,7 @@ class ObjProcess(object):
 
         # initial edge TPU engine
         logging.info('Initialize Edge TPU with model %s...' % model)
-        self.engine=pycoral.utils.edgetpu.make_interpreter(model) # self.engine = edgetpu.detection.engine.DetectionEngine(model)
+        self.engine=pycoral.utils.edgetpu.make_interpreter(model) 
         #returns tf.lite.Interpreter
         
         self.min_confidence = 0.30
