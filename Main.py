@@ -2,7 +2,7 @@ import logging
 import picar
 import cv2
 import datetime
-from object_processor import ObjProcess
+from objects_on_road_processor import ObjProcess
 from traffic_objects import 
 
 _SHOW_IMAGE = True
@@ -82,7 +82,7 @@ class AiCar(object):
         i = 0
         while self.camera.isOpened():
     
-            image_objs = self.process_objects_on_road(image_objs)
+            image_objs = self.processobjects(image_objs)
             self.video_objs.write(image_objs)
             show_image('Detected Objects', image_objs)
 
@@ -91,15 +91,12 @@ class AiCar(object):
                 self.cleanup()
                 break
 
-    def process_objects_on_road(self, image):
-        image = self.traffic_sign_processor.process_objects_on_road(image)
+    def processobjects(self, image):
+        image = self.traffic_sign_processor.processobjects(image)
         return image
 
 
 
-############################
-# Utility Functions
-############################
 def show_image(title, frame, show=_SHOW_IMAGE):
     if show:
         cv2.imshow(title, frame)
