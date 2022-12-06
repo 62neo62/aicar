@@ -73,7 +73,7 @@ class ObjProcess(object):
                                 3: greenlight(),
                                 4: yellowlight(),
 
-    def process_objects_on_road(self, frame):
+    def processobjects(self, frame):
         # Main entry point of the Road Object Handler
         logging.debug('Processing objects.................................')
         objects, final_frame = self.detect_objects(frame)
@@ -196,7 +196,7 @@ def show_image(title, frame, show=_SHOW_IMAGE):
 def test_photo(file):
     object_processor = ObjProcess()
     frame = cv2.imread(file)
-    combo_image = object_processor.process_objects_on_road(frame)
+    combo_image = object_processor.processobjects(frame)
     show_image('Detected Objects', combo_image)
 
     cv2.waitKey(0)
@@ -220,7 +220,7 @@ def test_video(video_file):
             _, frame = cap.read()
             cv2.imwrite("%s_%03d.png" % (video_file, i), frame)
 
-            combo_image = object_processor.process_objects_on_road(frame)
+            combo_image = object_processor.processobjects(frame)
             cv2.imwrite("%s_overlay_%03d.png" % (video_file, i), combo_image)
             video_overlay.write(combo_image)
 
