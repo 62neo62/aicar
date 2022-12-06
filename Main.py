@@ -1,10 +1,9 @@
-import logging
-import picar
-import cv2
 import datetime
+import picar
+import logging
 from objects_on_road_processor import ObjProcess
 import objectsdefs 
-
+import cv2
 _SHOW_IMAGE = True
 
 
