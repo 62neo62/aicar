@@ -16,7 +16,7 @@ from traffic_objects import SPEED
 _SHOW_IMAGE = False
 
 
-class ObjectsOnRoadProcessor(object):
+class ObjProcess(object):
     """
     This class 1) detects what objects (namely traffic signs and people) are on the road
     and 2) controls the car navigation (speed) accordingly
@@ -31,7 +31,7 @@ class ObjectsOnRoadProcessor(object):
                  height=480):
         # model: This MUST be a tflite model that was specifically compiled for Edge TPU.
         # https://coral.withgoogle.com/web-compiler/
-        logging.info('Creating a ObjectsOnRoadProcessor...')
+        logging.info('Creating a ObjProcess...')
         self.width = width
         self.height = height
 
@@ -194,7 +194,7 @@ def show_image(title, frame, show=_SHOW_IMAGE):
 # Test Functions
 ############################
 def test_photo(file):
-    object_processor = ObjectsOnRoadProcessor()
+    object_processor = ObjProcess()
     frame = cv2.imread(file)
     combo_image = object_processor.process_objects_on_road(frame)
     show_image('Detected Objects', combo_image)
@@ -204,7 +204,7 @@ def test_photo(file):
 
 
 def test_video(video_file):
-    object_processor = ObjectsOnRoadProcessor()
+    object_processor = ObjProcess()
     cap = cv2.VideoCapture(video_file + '.avi')
 
     # skip first second of video.
