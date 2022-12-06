@@ -3,7 +3,7 @@ import picar
 import cv2
 import datetime
 from objects_on_road_processor import ObjProcess
-from traffic_objects import 
+import objectsdefs 
 
 _SHOW_IMAGE = True
 
