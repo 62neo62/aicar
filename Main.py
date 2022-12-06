@@ -2,7 +2,7 @@ import logging
 import picar
 import cv2
 import datetime
-from objects_on_road_processor import ObjectsOnRoadProcessor
+from objects_on_road_processor import ObjProcess
 from traffic_objects import 
 
 _SHOW_IMAGE = True
@@ -41,7 +41,7 @@ class AiCar(object):
         self.front_wheels = picar.front_wheels.Front_Wheels()
         self.front_wheels.turning_offset = -25  # calibrate servo to center
 
-        self.traffic_sign_processor = ObjectsOnRoadProcessor(self)
+        self.traffic_sign_processor = ObjProcess(self)
 
         self.fourcc = cv2.VideoWriter_fourcc(*'XVID')
         datestr = datetime.datetime.now().strftime("%y%m%d_%H%M%S")
